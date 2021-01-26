@@ -1,3 +1,9 @@
+(* sujet
+(* Once you are done writing the code, remove this directive,
+   whose purpose is to disable several warnings. *)
+[@@@warning "-27"]
+  /sujet *)
+
 (****************************************************************)
 (* Simple types, annotated by OCaml types                       *)
 (****************************************************************)
@@ -74,7 +80,7 @@ and 'a tm =
 (* Use a GADT to make sure that we can only write well-typed values. *)
 
 (* sujet
-and 'a vl = VFun : (* NYI *) -> 'nyi vl
+and 'a vl = VFun : (* NYI -> *) 'nyi vl
           | VBase : base -> base vl
 /sujet *)
 
@@ -145,7 +151,9 @@ let typ2 () = Arr (Arr (Base, Base), Arr (Base, Base))
 let tm1 () = failwith "NYI"
    /sujet *)
 
+(* corrige *)
 let tm1 () = Lam (fun x -> Var x)
+(* /corrige *)
 
 (* Define [tm2] as [λ f. λ x. f x] *)
 
@@ -153,14 +161,18 @@ let tm1 () = Lam (fun x -> Var x)
 let tm2 () = failwith "NYI"
    /sujet *)
 
+(* corrige *)
 let tm2 () = Lam (fun f -> Lam (fun x -> App (Var f, Var x)))
+(* /corrige *)
 
 (* Define [tm3] as [λ x. (λ y. y) x] *)
 (* sujet
 let tm3 () = failwith "NYI"
    /sujet *)
 
+(* corrige *)
 let tm3 () = Lam (fun x -> App (Lam (fun y -> Var y), Var x))
+(* /corrige *)
 
 (* Define [vl1] as [λ x. x] *)
 
@@ -170,7 +182,6 @@ let vl1 () = failwith "NYI"
 
 (* corrige *)
 let vl1 () = VFun (fun x -> x)
-
 (* /corrige *)
 
 (* Define [vl2] as [λ f. λ x. f x] *)
@@ -260,7 +271,7 @@ let rec eval : type a. a tm -> a vl = function
 (* sujet
  let rec reify : type a. a tp -> a vl -> a nf =
    fun a v -> failwith "NYI"
-and reflect : type a. a tp -> a at -> a vl = fun a r ->
+and reflect : type a. a tp -> a at -> a vl =
    fun a r -> failwith "NYI"
   /sujet *)
 

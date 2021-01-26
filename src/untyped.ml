@@ -1,3 +1,9 @@
+(* sujet
+(* Once you are done writing the code, remove this directive,
+   whose purpose is to disable several warnings. *)
+[@@@warning "-27"]
+  /sujet *)
+
 (****************************************************************)
 (* Simple types                                                 *)
 (****************************************************************)
@@ -10,21 +16,10 @@
 >>>
  *)
 
-(* sujet
-type tp = (* NYI *)
-  |
-  [@@deriving show]
-  /sujet *)
-
-(* corrige *)
 type tp =
   | Base
   | Arr of tp * tp
-[@@deriving show]
-
-(* let base = Base*)
-(* let arr _ = failwith "NYI" *)
-(* /corrige *)
+  [@@deriving show]
 
 (* Define [typ1] as [Ω → Ω] *)
 
@@ -34,7 +29,6 @@ let typ1 () = failwith "NYI"
 
 (* corrige *)
 let typ1 () = Arr (Base, Base)
-
 (* /corrige *)
 
 (* Define [typ2] as [(Ω → Ω) → Ω → Ω] *)
@@ -45,33 +39,11 @@ let typ2 () = failwith "NYI"
 
 (* corrige *)
 let typ2 () = Arr (Arr (Base, Base), Arr (Base, Base))
-
 (* /corrige *)
 
 let _ =
   Format.printf "tp1 = %a\n" pp_tp (typ1 ()) ;
   Format.printf "tp2 = %a\n" pp_tp (typ2 ())
-
-
-(*
-let%test _ =
-  arr [arr [base; base]; base] !=  arr [base; arr [base; base]]
-
-let%test _ =
-  arr [arr [base; base]; base; base]
-  = arr [arr [base; base]; arr [base; base]]
-
-(* corrige *)
-let%test _ =
-  arr [arr [base; base]; base; base]=
-    Arr (Arr (Base, Base), Arr (Base, Base))
-
-let%test _ =
-  arr [arr [base; base]; base; base; base]=
-    Arr (Arr (Base, Base), Arr(Base, Arr (Base, Base)))
-
-(* /corrige *)
- *)
 
 (****************************************************************)
 (* Source language: λ-terms                                     *)
@@ -411,8 +383,6 @@ let%test _ =
   in
   let n1 =
     reify
-      (* XXX: use smart constructors *)
-      (* (arr [base; base]) *)
       (Arr (Base, Base))
       (VFun (fun x -> x))
   in
@@ -428,8 +398,6 @@ let%test _ =
   in
   let n1 =
     reify
-      (* XXX: use smart constructors *)
-      (* (arr [arr [base; base]; base; base]) *)
       (Arr (Arr (Base, Base), Arr (Base, Base)))
       (VFun (fun x -> x))
   in
