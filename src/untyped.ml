@@ -41,9 +41,11 @@ let typ2 () = failwith "NYI"
 let typ2 () = Arr (Arr (Base, Base), Arr (Base, Base))
 (* /corrige *)
 
+(*
 let _ =
   Format.printf "tp1 = %a\n" pp_tp (typ1 ()) ;
   Format.printf "tp2 = %a\n" pp_tp (typ2 ())
+*)
 
 (****************************************************************)
 (* Source language: λ-terms                                     *)
@@ -118,6 +120,7 @@ let tm3 () = failwith "NYI"
 let tm3 () = Lam (fun x -> App (Lam (fun y -> Var y), Var x))
 (* /corrige *)
 
+(*
 let _ =
   let gensym =
     let x = ref 0 in
@@ -130,7 +133,7 @@ let _ =
   Format.printf "tm1 = %a\n" pp_tm_str (tm1 ()) ;
   Format.printf "tm2 = %a\n" pp_tm_str (tm2 ()) ;
   Format.printf "tm3 = %a\n" pp_tm_str (tm3 ())
-
+ *)
 
 (****************************************************************)
 (* Intermediate language of values                              *)
@@ -302,6 +305,7 @@ let nf3 () = NLam (fun x -> NAt (AVar x))
 
 (* /corrige *)
 
+(*
 let _ =
   let gensym =
     let x = ref 0 in
@@ -314,7 +318,7 @@ let _ =
   Format.printf "nf1 = %a\n" pp_nf_str (nf1 ()) ;
   Format.printf "nf2 = %a\n" pp_nf_str (nf2 ()) ;
   Format.printf "nf3 = %a\n" pp_nf_str (nf3 ())
-
+ *)
 
 let%test _ =
   let gensym =
