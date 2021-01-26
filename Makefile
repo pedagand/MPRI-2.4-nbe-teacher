@@ -17,6 +17,6 @@ export:
 	  sed -f sanitize.sed $$f > $(DST)/$$f ; \
 	done
 # Compile the code that is given to the students.
-	@ cd $(DST); dune build; dune build @fmt --auto-promote; true
+	@ cd $(DST); dune build && dune build @fmt --auto-promote; true
 # Show what we have done.
 	ls $(DST) $(DST)/src
