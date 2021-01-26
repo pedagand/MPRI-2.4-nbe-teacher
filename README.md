@@ -2,10 +2,10 @@
 
 ## Setup
 
-This project needs `dune` and `ppx_inline_test` to build. You can get
-them through
+This project needs `dune`, `ppx_inline_test` and `ppx_deriving` to
+build. You can get them through
 
-    opam install dune.2.7 ppx_inline_test
+    opam install dune.2.7 ppx_inline_test ppx_deriving
 
 KNOWN ISSUE: the integration of `ppx_inline_test` and merlin is known
 to cause problem if you're using `ocaml-migrate-parsetree > 1.8.0`. Do
