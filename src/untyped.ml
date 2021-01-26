@@ -4,6 +4,14 @@
 [@@@warning "-27-34-37-39"]
   /sujet *)
 
+(* sujet
+let debug = 0
+/sujet *)
+
+(* corrige *)
+let debug = 4
+(* /corrige *)
+
 (****************************************************************)
 (* Simple types                                                 *)
 (****************************************************************)
@@ -41,11 +49,12 @@ let typ2 () = failwith "NYI"
 let typ2 () = Arr (Arr (Base, Base), Arr (Base, Base))
 (* /corrige *)
 
-(*
 let _ =
-  Format.printf "tp1 = %a\n" pp_tp (typ1 ()) ;
-  Format.printf "tp2 = %a\n" pp_tp (typ2 ())
-*)
+  if debug > 0 then
+    begin
+      Format.printf "tp1 = %a\n" pp_tp (typ1 ()) ;
+      Format.printf "tp2 = %a\n" pp_tp (typ2 ())
+    end
 
 (****************************************************************)
 (* Source language: λ-terms                                     *)
@@ -120,7 +129,6 @@ let tm3 () = failwith "NYI"
 let tm3 () = Lam (fun x -> App (Lam (fun y -> Var y), Var x))
 (* /corrige *)
 
-(*
 let _ =
   let gensym =
     let x = ref 0 in
@@ -130,10 +138,13 @@ let _ =
   in
   let pp_var oc s = Format.fprintf oc "%s" s in
   let pp_tm_str = pp_tm gensym pp_var in
-  Format.printf "tm1 = %a\n" pp_tm_str (tm1 ()) ;
-  Format.printf "tm2 = %a\n" pp_tm_str (tm2 ()) ;
-  Format.printf "tm3 = %a\n" pp_tm_str (tm3 ())
- *)
+  if debug > 1 then
+    begin
+      Format.printf "tm1 = %a\n" pp_tm_str (tm1 ()) ;
+      Format.printf "tm2 = %a\n" pp_tm_str (tm2 ()) ;
+      Format.printf "tm3 = %a\n" pp_tm_str (tm3 ())
+    end
+
 
 (****************************************************************)
 (* Intermediate language of values                              *)
@@ -305,7 +316,6 @@ let nf3 () = NLam (fun x -> NAt (AVar x))
 
 (* /corrige *)
 
-(*
 let _ =
   let gensym =
     let x = ref 0 in
@@ -315,10 +325,12 @@ let _ =
   in
   let pp_var oc s = Format.fprintf oc "%s" s in
   let pp_nf_str = pp_nf gensym pp_var in
-  Format.printf "nf1 = %a\n" pp_nf_str (nf1 ()) ;
-  Format.printf "nf2 = %a\n" pp_nf_str (nf2 ()) ;
-  Format.printf "nf3 = %a\n" pp_nf_str (nf3 ())
- *)
+  if debug > 2 then
+    begin
+      Format.printf "nf1 = %a\n" pp_nf_str (nf1 ()) ;
+      Format.printf "nf2 = %a\n" pp_nf_str (nf2 ()) ;
+      Format.printf "nf3 = %a\n" pp_nf_str (nf3 ())
+    end
 
 let%test _ =
   let gensym =
