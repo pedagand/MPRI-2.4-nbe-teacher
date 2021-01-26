@@ -76,7 +76,7 @@ let _ =
             piggy-back on OCaml for managing binders! *)
    |
 
-   let pp_tm gensym pp_var = failwith "NYI"
+   let pp_tm gensym pp_var oc tm = failwith "NYI"
  /sujet *)
 
 (* corrige *)
@@ -224,8 +224,8 @@ type 'a nf = (* NYI *)
 and 'a at = (* NYI *)
   |
 
-let rec pp_nf gensym pp_var oc = failwith "NYI"
-and pp_at gensym pp_var oc = failwith "NYI"
+let rec pp_nf gensym pp_var oc nf = failwith "NYI"
+and pp_at gensym pp_var oc at = failwith "NYI"
 
 let rec equal_nf gensym equal_var nf1 nf2 = failwith "NYI"
 and equal_at gensym equal_var at1 at2 = failwith "NYI"
