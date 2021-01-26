@@ -1,7 +1,7 @@
 (* sujet
 (* Once you are done writing the code, remove this directive,
    whose purpose is to disable several warnings. *)
-[@@@warning "-27"]
+[@@@warning "-27-34-37-39"]
   /sujet *)
 
 (****************************************************************)
@@ -66,7 +66,7 @@ let _ =
    |
 
    let pp_tm gensym pp_var = failwith "NYI"
- *)
+ /sujet *)
 
 (* corrige *)
 type 'a tm =
@@ -95,7 +95,9 @@ let pp_tm gensym pp_var =
 let tm1 () = failwith "NYI"
    /sujet *)
 
+(* corrige *)
 let tm1 () = Lam (fun x -> Var x)
+(* /corrige *)
 
 (* Define [tm2] as [λ f. λ x. f x] *)
 
@@ -103,14 +105,18 @@ let tm1 () = Lam (fun x -> Var x)
 let tm2 () = failwith "NYI"
    /sujet *)
 
+(* corrige *)
 let tm2 () = Lam (fun f -> Lam (fun x -> App (Var f, Var x)))
+(* /corrige *)
 
 (* Define [tm3] as [λ x. (λ y. y) x] *)
 (* sujet
 let tm3 () = failwith "NYI"
    /sujet *)
 
+(* corrige *)
 let tm3 () = Lam (fun x -> App (Lam (fun y -> Var y), Var x))
+(* /corrige *)
 
 let _ =
   let gensym =
@@ -203,6 +209,12 @@ type 'a nf = (* NYI *)
   |
 and 'a at = (* NYI *)
   |
+
+let rec pp_nf gensym pp_var oc = failwith "NYI"
+and pp_at gensym pp_var oc = failwith "NYI"
+
+let rec equal_nf gensym equal_var nf1 nf2 = failwith "NYI"
+and equal_at gensym equal_var at1 at2 = failwith "NYI"
   /sujet *)
 
 (* corrige *)
