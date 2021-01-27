@@ -52,8 +52,9 @@ and base = Atom of base at
 (* Use a GADT to make sure that we can only write well-typed terms. *)
 
 (* sujet
-and 'a tm = (* NYI *)
-  |
+and 'a tm =
+  | Var : 'a var -> 'a tm
+(* | NYI: add missing cases *)
    /sujet *)
 
 (* corrige *)
@@ -101,8 +102,9 @@ and 'a vl =
 (* sujet
 and 'a nf = (* NYI *)
   |
-and 'a at = (* NYI *)
-  |
+and 'a at =
+  | AVar : 'a y -> 'a at
+(* | NYI: add missing cases *)
 /sujet *)
 
 (* corrige *)
