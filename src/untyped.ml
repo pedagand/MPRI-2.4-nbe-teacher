@@ -76,7 +76,7 @@ let _ =
             piggy-back on OCaml for managing binders! *)
    |
 
-   let pp_tm gensym pp_var oc tm = failwith "NYI"
+   let rec pp_tm gensym pp_var oc tm = failwith "NYI"
  /sujet *)
 
 (* corrige *)
@@ -165,6 +165,11 @@ let _ =
 type 'b vl =
   | VFun of ('b vl -> 'b vl)
   | VBase of 'b
+
+let app f s =
+  match f with
+  | VFun f -> f s
+  | _ -> failwith "Invalid function"
 
 (* Define [vl1] as [λ x. x] *)
 
